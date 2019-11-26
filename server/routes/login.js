@@ -68,7 +68,7 @@ app.post('/google', async(req, res) => {
     let token = req.body.idtoken;
     let googleUser = await verify(token)
         .catch(e => {
-            return res.status.name(403).json({
+            return res.status(403).json({
                 ok: false,
                 err: e
             })
@@ -100,7 +100,6 @@ app.post('/google', async(req, res) => {
             }
         } else {
             // Si el usuario no existe en nuestra BBDD
-
             let usuario = new Usuario();
             usuario.nombre = googleUser.nombre;
             usuario.email = googleUser.email;
